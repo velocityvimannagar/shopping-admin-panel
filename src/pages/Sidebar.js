@@ -15,7 +15,7 @@ import PeopleOutlineOutlinedIcon from "@mui/icons-material/PeopleOutlineOutlined
 import { useNavigate } from "react-router-dom";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 export function Sidebar({
   drawerWidth,
   handleDrawerTransitionEnd,
@@ -41,12 +41,12 @@ export function Sidebar({
         {
           name: "Main Category",
           icon: <TableChartOutlinedIcon />,
-          route: "categories",
+          route: "categories/main-categories",
         },
         {
           name: "Sub Category",
           icon: <TableChartOutlinedIcon />,
-          route: "sub-categories",
+          route: "categories/sub-categories",
         },
       ],
     },
@@ -73,7 +73,7 @@ export function Sidebar({
       <Divider />
       <List>
         {menus.map((menu, index) => (
-          <>
+          <Fragment key={index}>
             <ListItem
               key={menu.name}
               disablePadding
@@ -115,7 +115,7 @@ export function Sidebar({
                   </ListItem>
                 );
               })}
-          </>
+          </Fragment>
         ))}
       </List>
     </div>

@@ -7,8 +7,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Route, Routes } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
-import { MainCategories } from "./categories/MainCategories";
 import { Categories } from "./categories/Categories";
+import { Products } from "./products/Products";
 const drawerWidth = 240;
 
 export function Pages(props) {
@@ -74,12 +74,12 @@ export function Pages(props) {
             path="dashboard"
             element={<div>This is dashboard</div>}
           ></Route>
-          <Route path="categories/*" element={<Categories></Categories>}></Route>
           <Route
-            path="sub-categories"
-            element={<div>This is sub categories</div>}
+            path="categories/*"
+            element={<Categories></Categories>}
           ></Route>
-          <Route path="product" element={<div>This is product</div>}></Route>
+
+          <Route path="product" element={<Products></Products>}></Route>
           <Route path="orders" element={<div>This is orders</div>}></Route>
           <Route path="users" element={<div>This is users</div>}></Route>
         </Routes>

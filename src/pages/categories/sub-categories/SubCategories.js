@@ -8,27 +8,18 @@ import {
   TableRow,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import { useState } from "react";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export function MainCategories() {
+import "./SubCategories.css";
+
+export function SubCategories() {
   const navigate = useNavigate();
-  const [categories, setCategories] = useState([
-    {
-      id: "1",
-      category: "Transform LED",
-      description: "TRF LED",
-      createdAt: "04 March 2024",
-    },
-    {
-      id: "2",
-      category: "RFL LED",
-      description: "RFL LED",
-      createdAt: "04 March 2024",
-    },
-  ]);
+  const categories = useSelector(
+    (state) => state.categoriesStore.subCategories
+  );
   return (
     <div>
       <Button
@@ -37,14 +28,15 @@ export function MainCategories() {
           navigate("add");
         }}
       >
-        Add Category
+        Add Sub Category
       </Button>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Categories</TableCell>
-              <TableCell>Description</TableCell>
+              <TableCell>Sub Category</TableCell>
+              <TableCell>Main Category</TableCell>
+              <TableCell>Total Items</TableCell>
               <TableCell>Created At</TableCell>
               <TableCell>Actions</TableCell>
             </TableRow>
@@ -56,9 +48,11 @@ export function MainCategories() {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.category}
+                  <img src={row.image} className="sub-category-image"></img>
+                  {row.subCategory}
                 </TableCell>
-                <TableCell>{row.description}</TableCell>
+                <TableCell>{row.mainCategory}</TableCell>
+                <TableCell>{row.totalItems}</TableCell>
                 <TableCell>{row.createdAt}</TableCell>
                 <TableCell>
                   <EditOutlinedIcon></EditOutlinedIcon>
