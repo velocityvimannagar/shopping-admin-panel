@@ -9,6 +9,7 @@ import { Route, Routes } from "react-router-dom";
 import { Sidebar } from "./Sidebar";
 import { Categories } from "./categories/Categories";
 import { Products } from "./products/Products";
+import { Header } from "./Header";
 const drawerWidth = 240;
 
 export function Pages(props) {
@@ -32,11 +33,15 @@ export function Pages(props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar
+      {/* <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          backgroundColor: "inherit", 
+          color: "black",
+          boxShadow: 'none',
+          borderBottom: "1px solid rgba(0, 0, 0, 0.12)"
         }}
       >
         <Toolbar>
@@ -53,7 +58,11 @@ export function Pages(props) {
             Responsive drawer
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
+      <Header
+        drawerWidth={drawerWidth}
+        handleDrawerToggle={handleDrawerToggle}
+      ></Header>
       <Sidebar
         drawerWidth={drawerWidth}
         handleDrawerTransitionEnd={handleDrawerTransitionEnd}
@@ -79,7 +88,7 @@ export function Pages(props) {
             element={<Categories></Categories>}
           ></Route>
 
-          <Route path="product" element={<Products></Products>}></Route>
+          <Route path="products/*" element={<Products></Products>}></Route>
           <Route path="orders" element={<div>This is orders</div>}></Route>
           <Route path="users" element={<div>This is users</div>}></Route>
         </Routes>

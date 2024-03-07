@@ -53,7 +53,7 @@ export function Sidebar({
     {
       name: "Product",
       icon: <Inventory2OutlinedIcon />,
-      route: "product",
+      route: "products",
     },
     {
       name: "Orders",
@@ -106,7 +106,7 @@ export function Sidebar({
                     disablePadding
                     onClick={() => {
                       navigate(child.route);
-                    }} 
+                    }}
                   >
                     <ListItemButton>
                       {/* <ListItemIcon>{child.icon}</ListItemIcon> */}
@@ -139,6 +139,7 @@ export function Sidebar({
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: drawerWidth,
+            backgroundColor: "inherit" 
           },
         }}
       >
@@ -151,6 +152,7 @@ export function Sidebar({
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: drawerWidth,
+            backgroundColor: "inherit" 
           },
         }}
         open
