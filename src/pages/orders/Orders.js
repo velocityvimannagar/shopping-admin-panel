@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "./products.css";
+import "./orders.css";
 import {
   Button,
   Chip,
@@ -18,7 +18,7 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { storeProducts } from "../../redux/productsSlice";
-export function ProductsList() {
+export function OrdersList() {
   const navigate = useNavigate();
   const products = useSelector((state) => state.productsStore.products);
   const dispatch = useDispatch();
@@ -36,30 +36,29 @@ export function ProductsList() {
         {
           id: 1,
           name: "Ruban LED 2021",
-          image:
-            "https://assets-global.website-files.com/619e8d2e8bd4838a9340a810/64c590c754d6bc13ebd90cbc_ai_product_photo_styles.webp",
+          image: "https://assets-global.website-files.com/619e8d2e8bd4838a9340a810/64c590c754d6bc13ebd90cbc_ai_product_photo_styles.webp",
           createdAt: "17 Jun 2023",
           status: "In Stock",
           rating: 4,
           price: "$100.0",
           featured: true,
+          quantity: 2
         },
         {
           id: 2,
           name: "Ruban LED 2024",
-          image:
-            "https://assets-global.website-files.com/619e8d2e8bd4838a9340a810/64c590c754d6bc13ebd90cbc_ai_product_photo_styles.webp",
+          image: "https://assets-global.website-files.com/619e8d2e8bd4838a9340a810/64c590c754d6bc13ebd90cbc_ai_product_photo_styles.webp",
           createdAt: "17 Jun 2023",
           status: "Low Stock",
           rating: 2,
           price: "$100.0",
           featured: false,
+          quantity: 3
         },
         {
           id: 3,
           name: "Ruban LED 2027",
-          image:
-            "https://assets-global.website-files.com/619e8d2e8bd4838a9340a810/64c590c754d6bc13ebd90cbc_ai_product_photo_styles.webp",
+          image: "https://assets-global.website-files.com/619e8d2e8bd4838a9340a810/64c590c754d6bc13ebd90cbc_ai_product_photo_styles.webp",
           createdAt: "17 Jun 2023",
           status: "No Stock",
           rating: 2,
@@ -72,15 +71,6 @@ export function ProductsList() {
 
   return (
     <div>
-      <Button
-        variant="contained"
-        onClick={() => {
-          navigate("add");
-        }}
-      >
-        Add Product
-      </Button>
-      <br></br> <br></br>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

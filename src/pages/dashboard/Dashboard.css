@@ -1,0 +1,15 @@
+.dashboard-card {
+  width: 250px;
+}
+.dashboard-card-icon {
+  height: 50px;
+  width: 50px;
+  background-color: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+.dashboard-card-heading{
+    font-size: 15px;
+}

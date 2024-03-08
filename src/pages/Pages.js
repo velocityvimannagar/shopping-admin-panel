@@ -10,6 +10,8 @@ import { Sidebar } from "./Sidebar";
 import { Categories } from "./categories/Categories";
 import { Products } from "./products/Products";
 import { Header } from "./Header";
+import { OrdersList } from "./orders/Orders";
+import { Dashboard } from "./dashboard/Dashboard";
 const drawerWidth = 240;
 
 export function Pages(props) {
@@ -79,17 +81,14 @@ export function Pages(props) {
       >
         <Toolbar />
         <Routes>
-          <Route
-            path="dashboard"
-            element={<div>This is dashboard</div>}
-          ></Route>
+          <Route path="dashboard" element={<Dashboard></Dashboard>}></Route>
           <Route
             path="categories/*"
             element={<Categories></Categories>}
           ></Route>
 
           <Route path="products/*" element={<Products></Products>}></Route>
-          <Route path="orders" element={<div>This is orders</div>}></Route>
+          <Route path="orders" element={<OrdersList></OrdersList>}></Route>
           <Route path="users" element={<div>This is users</div>}></Route>
         </Routes>
       </Box>
