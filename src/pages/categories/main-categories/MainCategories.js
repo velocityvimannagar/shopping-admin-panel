@@ -14,6 +14,7 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { storeMainCategories } from "../../../redux/categoriesSlice";
+import moment from "moment";
 
 export function MainCategories() {
   const navigate = useNavigate();
@@ -49,10 +50,10 @@ export function MainCategories() {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.category}
+                  {row.name}
                 </TableCell>
                 <TableCell>{row.description}</TableCell>
-                <TableCell>{row.createdAt}</TableCell>
+                <TableCell>{moment(row.createdAt).format('LL')}</TableCell>
                 <TableCell>
                   <EditOutlinedIcon></EditOutlinedIcon>
                   <DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon>

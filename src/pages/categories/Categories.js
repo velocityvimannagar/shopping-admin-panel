@@ -6,28 +6,31 @@ import { AddSubCategory } from "./sub-categories/AddSubCategory";
 import { storeMainCategories, storeSubCategories } from "../../redux/categoriesSlice";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
+import axios from "axios";
 
 export function Categories() {
   const dispatch = useDispatch();
 
+  const fetchMainCategories = () => {
+    axios.get('http://localhost:3001/categories')
+      .then(function (response) {
+        dispatch(
+          storeMainCategories(response.data)
+        );
+      })
+      .catch(function (error) {
+        // handle error
+        console.log("Error =>", error);
+      })
+      .finally(function () {
+        // always executed
+      });
+  }
+
   useEffect(() => {
     // Fetch data from API
-    dispatch(
-      storeMainCategories([
-        {
-          id: "1",
-          category: "Transform LED",
-          description: "TRF LED",
-          createdAt: "04 March 2024",
-        },
-        {
-          id: "2",
-          category: "RFL LED",
-          description: "RFL LED",
-          createdAt: "04 March 2024",
-        },
-      ])
-    );
+    fetchMainCategories()
+
     // Fetch data from API
     dispatch(
       storeSubCategories([
