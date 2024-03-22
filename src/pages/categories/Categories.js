@@ -7,12 +7,13 @@ import { storeMainCategories, storeSubCategories } from "../../redux/categoriesS
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../Constants";
 
 export function Categories() {
   const dispatch = useDispatch();
 
   const fetchMainCategories = () => {
-    axios.get('http://localhost:3001/categories')
+    axios.get(`${API_BASE_URL}/categories`)
       .then(function (response) {
         dispatch(
           storeMainCategories(response.data)
@@ -55,7 +56,7 @@ export function Categories() {
       ></Route>
       <Route
         path="/main-categories/add"
-        element={<AddMainCategory></AddMainCategory>}
+        element={<AddMainCategory fetchMainCategories={fetchMainCategories}></AddMainCategory>}
       ></Route>
       <Route
         path="sub-categories"
