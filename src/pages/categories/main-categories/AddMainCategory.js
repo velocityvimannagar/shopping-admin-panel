@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_BASE_URL } from "../../../Constants";
 
-export function AddMainCategory({fetchMainCategories}) {
+export function AddMainCategory({ fetchMainCategories }) {
 
   const [category, setCategory] = useState({
     name: "",
@@ -28,7 +28,7 @@ export function AddMainCategory({fetchMainCategories}) {
     // API Call
     axios.post(`${API_BASE_URL}/categories`, {
       ...category,
-      id: Math.floor(Math.random() * 1000),
+      id: Math.floor(Math.random() * 1000) + '',
       createdAt: new Date().toISOString()
     })
       .then(response => {

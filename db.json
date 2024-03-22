@@ -29,24 +29,6 @@
       "name": "Sports",
       "createdAt": "2024-03-14T09:30:00Z",
       "description": "Gear up for your favorite sports"
-    },
-    {
-      "id": "6",
-      "name": "Sports-YU",
-      "createdAt": "2024-03-14T09:30:00Z",
-      "description": "Gear up for your favorite sports"
-    },
-    {
-      "id": 626,
-      "name": "New Category",
-      "description": "My Description",
-      "createdAt": "2024-03-22T14:24:15.657Z"
-    },
-    {
-      "id": 105,
-      "name": "New Category 2",
-      "description": "New Description 2",
-      "createdAt": "2024-03-22T14:26:16.999Z"
     }
   ],
   "subCategories": [

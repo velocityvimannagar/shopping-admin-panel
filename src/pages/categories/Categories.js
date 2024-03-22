@@ -52,7 +52,7 @@ export function Categories() {
       <Route path="/" element={<Navigate to="main-categories" />}></Route>
       <Route
         path="/main-categories"
-        element={<MainCategories></MainCategories>}
+        element={<MainCategories fetchMainCategories={fetchMainCategories}></MainCategories>}
       ></Route>
       <Route
         path="/main-categories/add"

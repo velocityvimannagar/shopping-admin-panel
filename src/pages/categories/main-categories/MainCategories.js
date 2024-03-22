@@ -8,19 +8,44 @@ import {
   TableRow,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { storeMainCategories } from "../../../redux/categoriesSlice";
 import moment from "moment";
+import { ConfirmationDialog } from "../../components/ConfirmationDialog";
+import axios from "axios";
+import { API_BASE_URL } from "../../../Constants";
 
-export function MainCategories() {
+export function MainCategories({fetchMainCategories}) {
   const navigate = useNavigate();
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
+  const [currentDeletingId, setCurrentDeletingId] = useState();
+
   const categories = useSelector(
     (state) => state.categoriesStore.mainCategories
   );
+
+  const deleteCategory = (id) => {
+    setCurrentDeletingId(id)
+    setIsConfirmationOpen(true)
+  }
+  const onConfirmDelete = (bool) => {
+    setIsConfirmationOpen(false);
+    if (bool) {
+      axios.delete(`${API_BASE_URL}/categories/${currentDeletingId}`)
+        .then(function (response) {
+          alert("Category deleted")
+          fetchMainCategories()
+        })
+        .catch(function (error) {
+          // handle error
+          console.log("Error =>", error);
+        })
+    }
+  }
 
   return (
     <div>
@@ -56,13 +81,16 @@ export function MainCategories() {
                 <TableCell>{moment(row.createdAt).format('LL')}</TableCell>
                 <TableCell>
                   <EditOutlinedIcon></EditOutlinedIcon>
-                  <DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon>
+                  <DeleteOutlineOutlinedIcon onClick={() => {
+                    deleteCategory(row.id)
+                  }}></DeleteOutlineOutlinedIcon>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <ConfirmationDialog onClose={(bool) => { onConfirmDelete(bool) }} open={isConfirmationOpen}></ConfirmationDialog>
     </div>
   );
 }
